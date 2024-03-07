@@ -2,32 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.rc-progress-circle-path {
+  stroke-dasharray: 144.513px, 289.027;
+  stroke-dashoffset: 20;
+  transform: rotate(180deg);
+  transform-origin: 50px 50px;
+  transition: stroke-dashoffset 0s ease 0s, stroke-dasharray 0s ease 0s,
+    stroke ease 0s, stroke-width ease 0.3s, opacity ease 0s;
+  fill-opacity: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.rc-progress-circle-trail {
+  stroke: #231f24;
+  stroke-dasharray: 144.51326206513048px 289.02652413026095;
+  stroke-dashoffset: 0;
+  transform: rotate(180deg);
+  transform-origin: 50px 50px;
+  transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s,
+    stroke 0.3s, stroke-width 0.06s ease 0.3s, opacity 0.3s ease 0s;
+  fill-opacity: 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+progress::-webkit-progress-value {
+  background: linear-gradient(to right, #0b979a, #955bf1);
+  border-radius: 2rem;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+progress::-webkit-progress-bar {
+  color: white;
+  border-radius: 2rem;
+  background-color: #231f24;
 }
